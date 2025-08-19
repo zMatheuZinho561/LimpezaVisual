@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limpeza Visual</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <style>
+    /* Fundo animado em ondas */
+    .fundo-animado {
+      background: linear-gradient(-45deg, #0f172a, #1e293b, #0891b2, #2563eb);
+      background-size: 400% 400%;
+      animation: gradientMove 20s ease infinite;
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-white">
+
+  <nav class="fixed top-0 w-full z-50 bg-slate-800/60 backdrop-blur-md border-b border-white/10 shadow-md">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    
+    <!-- Logo -->
+    <div class="text-xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+      Limpeza Visual
+    </div>
+    
+    <!-- Menu Centralizado -->
+    <ul class="hidden md:flex space-x-8 font-medium text-gray-200 absolute left-1/2 transform -translate-x-1/2">
+      <li><a href="#home" class="relative px-3 py-2 hover:text-cyan-400 transition">Home</a></li>
+      <li><a href="#servicos" class="relative px-3 py-2 hover:text-cyan-400 transition">Serviços</a></li>
+      <li><a href="#avaliacoes" class="relative px-3 py-2 hover:text-cyan-400 transition">Avaliações</a></li>
+      <li><a href="#contato" class="relative px-3 py-2 hover:text-cyan-400 transition">Contato</a></li>
+    </ul>
+
+    <!-- Botão à direita -->
+    <a href="https://wa.me/5511999999999" target="_blank" 
+       class="hidden md:inline-block px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 shadow-lg transition text-sm font-semibold">
+      💬 WhatsApp
+    </a>
+
+  </div>
+</nav>
+
+  <!-- Hero -->
+  <section id="home" class="relative flex flex-col items-center justify-center text-center min-h-screen px-6 overflow-hidden">
+    <div class="fundo-animado"></div>
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
+      Limpeza Profissional de Vidros & Painéis Solares
+    </h1>
+    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">
+      Transparência e eficiência para seu espaço brilhar como novo.
+    </p>
+    <a href="https://wa.me/5511999999999" target="_blank" 
+       class="px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 shadow-lg transition-all text-lg font-semibold">
+      💬 Falar no WhatsApp
+    </a>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos" class="py-20 px-6 text-center bg-slate-800/70">
+    <h2 class="text-3xl font-bold mb-12">Nossos Serviços</h2>
+    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      
+      <div class="p-8 rounded-2xl bg-white/10 backdrop-blur-lg shadow-xl border border-white/20 hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+        <div class="text-cyan-400 text-5xl mb-4">💧</div>
+        <h3 class="text-xl font-semibold mb-3">Limpeza de Vidros</h3>
+        <p class="text-gray-300">Deixe suas janelas impecáveis, livres de manchas e com brilho profissional.</p>
+      </div>
+      
+      <div class="p-8 rounded-2xl bg-white/10 backdrop-blur-lg shadow-xl border border-white/20 hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+        <div class="text-yellow-400 text-5xl mb-4">☀️</div>
+        <h3 class="text-xl font-semibold mb-3">Painéis Solares</h3>
+        <p class="text-gray-300">Maximize a captação de energia com painéis sempre limpos e eficientes.</p>
+      </div>
+      
+      <div class="p-8 rounded-2xl bg-white/10 backdrop-blur-lg shadow-xl border border-white/20 hover:scale-105 hover:shadow-2xl transition-transform duration-300">
+        <div class="text-green-400 text-5xl mb-4">🔧</div>
+        <h3 class="text-xl font-semibold mb-3">Manutenção Preventiva</h3>
+        <p class="text-gray-300">Aumente a durabilidade dos seus vidros e painéis com manutenção especializada.</p>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Avaliações -->
+  <section id="avaliacoes" class="py-20 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-12">O que nossos clientes dizem</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      
+      <div class="p-6 rounded-2xl bg-white/10 backdrop-blur-lg shadow-lg border border-white/20 hover:scale-105 hover:shadow-2xl transition-transform duration-300 flex flex-col items-center">
+        <img src="https://i.pravatar.cc/100?img=3" class="w-16 h-16 rounded-full mb-4 border-2 border-cyan-400" alt="Cliente">
+        <p class="text-gray-200 italic">"Serviço impecável, meus vidros ficaram como novos!"</p>
+        <span class="block mt-4 text-sm text-cyan-400 font-semibold">— João M.</span>
+      </div>
+      
+      <div class="p-6 rounded-2xl bg-white/10 backdrop-blur-lg shadow-lg border border-white/20 hover:scale-105 hover:shadow-2xl transition-transform duration-300 flex flex-col items-center">
+        <img src="https://i.pravatar.cc/100?img=12" class="w-16 h-16 rounded-full mb-4 border-2 border-cyan-400" alt="Cliente">
+        <p class="text-gray-200 italic">"Atendimento rápido, educado e serviço de confiança!"</p>
+        <span class="block mt-4 text-sm text-cyan-400 font-semibold">— Carla S.</span>
+      </div>
+      
+      <div class="p-6 rounded-2xl bg-white/10 backdrop-blur-lg shadow-lg border border-white/20 hover:scale-105 hover:shadow-2xl transition-transform duration-300 flex flex-col items-center">
+        <img src="https://i.pravatar.cc/100?img=7" class="w-16 h-16 rounded-full mb-4 border-2 border-cyan-400" alt="Cliente">
+        <p class="text-gray-200 italic">"Meus painéis estão gerando muito mais energia depois da limpeza!"</p>
+        <span class="block mt-4 text-sm text-cyan-400 font-semibold">— Pedro A.</span>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="py-20 px-6 text-center bg-slate-800/70">
+    <h2 class="text-3xl font-bold mb-6">Entre em Contato</h2>
+    <p class="mb-6 text-gray-300">Fale diretamente com a gente no WhatsApp.</p>
+    <a href="https://wa.me/5511999999999" target="_blank" 
+       class="px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 shadow-lg transition-all text-lg font-semibold">
+      💬 Falar no WhatsApp
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 bg-slate-900/80 text-gray-400 text-sm border-t border-slate-700">
+    © 2025 Limpeza Visual. Todos os direitos reservados.
+  </footer>
+
+  <!-- Animações -->
+  <script>
+    ScrollReveal().reveal('h1', { duration: 1200, origin: 'top', distance: '40px' });
+    ScrollReveal().reveal('#servicos div', { interval: 200, origin: 'bottom', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('#avaliacoes div', { interval: 200, origin: 'bottom', distance: '50px', duration: 1000 });
+    ScrollReveal().reveal('#contato', { delay: 400, origin: 'bottom', distance: '40px', duration: 1000 });
+  </script>
+
+</body>
+</html>
