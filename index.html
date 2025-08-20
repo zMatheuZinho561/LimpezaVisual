@@ -1,182 +1,411 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Limpeza Visual</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Fundo animado suave */
-    .bg-animation {
-      background: radial-gradient(circle at 20% 20%, rgba(34,211,238,0.15), transparent 60%),
-                  radial-gradient(circle at 80% 80%, rgba(59,130,246,0.15), transparent 60%),
-                  radial-gradient(circle at 60% 30%, rgba(16,185,129,0.1), transparent 60%);
-      background-size: 200% 200%;
-      animation: slowmove 15s ease-in-out infinite alternate;
-    }
-    @keyframes slowmove {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 100% 100%; }
-    }
-
-    /* Animação menu mobile */
-    .menu-enter {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    .menu-enter-active {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .menu-exit {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .menu-exit-active {
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white bg-animation">
+<body class="text-gray-900 leading-relaxed">
 
-  <!-- Navbar -->
-  <nav class="fixed top-0 w-full z-50 bg-slate-800/60 backdrop-blur-md border-b border-white/10 shadow-md">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-      
-      <!-- Logo -->
-      <div class="text-xl font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-        Limpeza Visual
+<!-- Navigation -->
+   <nav class="fixed top-0 w-full z-50 navbar-glass">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex justify-between items-center">
+        
+        <!-- Logo with enhanced styling -->
+        <div class="text-2xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+          ✨ Limpeza Visual
+        </div>
+        
+        <!-- Desktop Menu with enhanced styling -->
+        <ul class="hidden md:flex space-x-2 font-medium text-gray-700">
+          <li><a href="#home" class="nav-link">Início</a></li>
+          <li><a href="#servicos" class="nav-link">Serviços</a></li>
+          <li><a href="#realizados" class="nav-link">Portfólio</a></li>
+          <li><a href="#avaliacoes" class="nav-link">Avaliações</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+        
+        <!-- Enhanced CTA Button -->
+        <a href="https://wa.me/5511999999999" target="_blank" class="hidden md:block">
+          <button class="modern-btn px-6 py-3 rounded-full text-white font-semibold flex items-center space-x-2">
+            <span>💬</span>
+            <span>WhatsApp</span>
+          </button>
+        </a>
+        
+        <!-- Enhanced Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-3 rounded-lg hover:bg-gray-100 transition-all duration-300">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
       </div>
-      
-      <!-- Menu Centralizado (Desktop) -->
-      <ul class="hidden md:flex space-x-8 font-medium text-gray-200 absolute left-1/2 transform -translate-x-1/2">
-        <li><a href="#home" class="relative px-3 py-2 hover:text-cyan-400 transition">Home</a></li>
-        <li><a href="#servicos" class="relative px-3 py-2 hover:text-cyan-400 transition">Serviços</a></li>
-        <li><a href="#avaliacoes" class="relative px-3 py-2 hover:text-cyan-400 transition">Avaliações</a></li>
-        <li><a href="#contato" class="relative px-3 py-2 hover:text-cyan-400 transition">Contato</a></li>
-      </ul>
-
-      <!-- Botão WhatsApp (Desktop) -->
-      <a href="https://wa.me/5511999999999" target="_blank" 
-        class="hidden md:inline-block px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 shadow-lg transition text-sm font-semibold">
-        💬 WhatsApp
-      </a>
-
-      <!-- Botão Menu Mobile -->
-      <button id="menu-btn" class="md:hidden text-gray-200 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Menu Mobile -->
-    <div id="mobile-menu" class="hidden flex-col items-center space-y-6 py-8 bg-slate-900/95 backdrop-blur-lg border-t border-white/10">
-      <a href="#home" class="text-lg text-gray-200 hover:text-cyan-400 transition">Home</a>
-      <a href="#servicos" class="text-lg text-gray-200 hover:text-cyan-400 transition">Serviços</a>
-      <a href="#avaliacoes" class="text-lg text-gray-200 hover:text-cyan-400 transition">Avaliações</a>
-      <a href="#contato" class="text-lg text-gray-200 hover:text-cyan-400 transition">Contato</a>
-      <a href="https://wa.me/5511999999999" target="_blank" 
-        class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 shadow-lg transition font-semibold">
-        💬 WhatsApp
-      </a>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section id="home" class="relative flex flex-col items-center justify-center text-center min-h-screen px-6">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-6">
-      Limpeza Profissional de Vidros & Painéis Solares
-    </h1>
-    <p class="text-lg md:text-xl text-gray-300 mb-8">
-      Transparência e eficiência para seu espaço brilhar como novo.
-    </p>
-    <a href="https://wa.me/5511999999999" target="_blank" 
-      class="px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 shadow-lg transition text-lg font-semibold">
-      💬 Falar no WhatsApp
-    </a>
+  <!-- Enhanced Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <button id="close-menu" class="close-menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    
+    <div class="text-center">
+      <a href="#home" class="mobile-menu-item block">Início</a>
+      <a href="#servicos" class="mobile-menu-item block">Serviços</a>
+      <a href="#realizados" class="mobile-menu-item block">Portfólio</a>
+      <a href="#avaliacoes" class="mobile-menu-item block">Avaliações</a>
+      <a href="#contato" class="mobile-menu-item block">Contato</a>
+      
+      <div class="mt-8">
+        <a href="https://wa.me/5511999999999" target="_blank">
+          <button class="modern-btn px-8 py-4 rounded-full text-white font-semibold text-lg">
+            💬 Falar no WhatsApp
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center hero-gradient text-white overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl float"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl float" style="animation-delay: -3s;"></div>
+    
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div class="fade-in">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          Vidros & Painéis Solares
+          <span class="block bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">
+            Sempre Impecáveis
+          </span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed">
+          Transformamos a limpeza em arte. Tecnologia avançada para resultados que impressionam. ✨
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/5511999999999" target="_blank">
+            <button class="px-8 py-4 bg-white text-purple-600 font-bold rounded-full shadow-xl hover:scale-105 transition-all duration-300">
+              🚀 Começar Agora
+            </button>
+          </a>
+          <button class="px-8 py-4 border-2 border-white/30 rounded-full font-semibold hover:bg-white/10 transition-all duration-300">
+            📋 Ver Serviços
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bottom wave -->
+    <div class="absolute bottom-0 left-0 w-full">
+      <svg viewBox="0 0 1440 120" fill="none" class="w-full h-20 md:h-32">
+        <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L0,120Z" fill="white"/>
+      </svg>
+    </div>
   </section>
 
-  <!-- Serviços -->
-  <section id="servicos" class="py-20 px-6 text-center bg-gray-800/50">
-    <h2 class="text-3xl font-bold mb-10">Nossos Serviços</h2>
-    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <div class="p-8 rounded-2xl bg-white/10 backdrop-blur-lg shadow-xl border border-white/20 hover:scale-105 transition-transform">
-        <div class="text-cyan-400 text-4xl mb-4">🪟</div>
-        <h3 class="text-xl font-semibold mb-3">Limpeza de Vidros</h3>
-        <p class="text-gray-300">Vidros brilhando, sem manchas e com acabamento impecável.</p>
-      </div>
-      <div class="p-8 rounded-2xl bg-white/10 backdrop-blur-lg shadow-xl border border-white/20 hover:scale-105 transition-transform">
-        <div class="text-cyan-400 text-4xl mb-4">☀️</div>
-        <h3 class="text-xl font-semibold mb-3">Limpeza de Painéis Solares</h3>
-        <p class="text-gray-300">Maximize a eficiência dos seus painéis com limpeza especializada.</p>
-      </div>
-      <div class="p-8 rounded-2xl bg-white/10 backdrop-blur-lg shadow-xl border border-white/20 hover:scale-105 transition-transform">
-        <div class="text-cyan-400 text-4xl mb-4">🛠️</div>
-        <h3 class="text-xl font-semibold mb-3">Manutenção Preventiva</h3>
-        <p class="text-gray-300">Cuidamos da durabilidade e desempenho dos seus equipamentos.</p>
+  <!-- Statistics Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="fade-in">
+          <div class="text-4xl font-bold text-indigo-600 stat-number">500+</div>
+          <p class="text-gray-600 mt-2">Clientes Satisfeitos</p>
+        </div>
+        <div class="fade-in">
+          <div class="text-4xl font-bold text-indigo-600 stat-number">2000+</div>
+          <p class="text-gray-600 mt-2">Vidros Limpos</p>
+        </div>
+        <div class="fade-in">
+          <div class="text-4xl font-bold text-indigo-600 stat-number">100%</div>
+          <p class="text-gray-600 mt-2">Satisfação</p>
+        </div>
+        <div class="fade-in">
+          <div class="text-4xl font-bold text-indigo-600 stat-number">5⭐</div>
+          <p class="text-gray-600 mt-2">Avaliação Média</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Avaliações -->
-  <section id="avaliacoes" class="py-20 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-10">O que nossos clientes dizem</h2>
-    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      <div class="p-6 rounded-2xl bg-white/10 backdrop-blur-lg shadow-lg border border-white/20 hover:scale-105 transition-transform">
-        <p class="text-gray-200">"Serviço impecável, vidros ficaram como novos!"</p>
-        <span class="block mt-4 text-sm text-gray-400">— João M.</span>
+  <!-- Services Section -->
+  <section id="servicos" class="py-20 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          Nossos Serviços
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Oferecemos soluções completas de limpeza com a mais alta qualidade e tecnologia
+        </p>
       </div>
-      <div class="p-6 rounded-2xl bg-white/10 backdrop-blur-lg shadow-lg border border-white/20 hover:scale-105 transition-transform">
-        <p class="text-gray-200">"Atendimento rápido e de confiança, recomendo!"</p>
-        <span class="block mt-4 text-sm text-gray-400">— Carla S.</span>
-      </div>
-      <div class="p-6 rounded-2xl bg-white/10 backdrop-blur-lg shadow-lg border border-white/20 hover:scale-105 transition-transform">
-        <p class="text-gray-200">"Meus painéis estão rendendo muito mais energia depois da limpeza!"</p>
-        <span class="block mt-4 text-sm text-gray-400">— Pedro A.</span>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="modern-card bg-white p-8 rounded-2xl fade-in">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-3xl">🪟</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Limpeza de Vidros</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Transparência perfeita para fachadas, janelas e superfícies de vidro. Resultado profissional garantido.
+          </p>
+          <div class="flex items-center text-indigo-600 font-semibold">
+            <span>Saiba mais</span>
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="modern-card bg-white p-8 rounded-2xl fade-in" style="animation-delay: 0.1s;">
+          <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-3xl">☀️</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Painéis Solares</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Manutenção especializada que aumenta a eficiência energética dos seus painéis solares.
+          </p>
+          <div class="flex items-center text-indigo-600 font-semibold">
+            <span>Saiba mais</span>
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="modern-card bg-white p-8 rounded-2xl fade-in" style="animation-delay: 0.2s;">
+          <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-3xl">🛠️</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">Manutenção Preventiva</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Cuidado contínuo para prolongar a vida útil e manter a performance ideal dos seus equipamentos.
+          </p>
+          <div class="flex items-center text-indigo-600 font-semibold">
+            <span>Saiba mais</span>
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Contato -->
-  <section id="contato" class="py-20 px-6 text-center bg-gray-800/50">
-    <h2 class="text-3xl font-bold mb-6">Entre em Contato</h2>
-    <p class="mb-6 text-gray-300">Fale diretamente com a gente no WhatsApp.</p>
-    <a href="https://wa.me/5511999999999" target="_blank" 
-      class="px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 shadow-lg transition text-lg font-semibold">
-      💬 Falar no WhatsApp
-    </a>
+  <!-- Portfolio Section -->
+  <section id="realizados" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          Trabalhos Realizados
+        </h2>
+        <p class="text-xl text-gray-600">
+          Veja alguns dos nossos projetos mais recentes
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="modern-card bg-white rounded-2xl overflow-hidden fade-in image-hover">
+          <div class="h-64 bg-gradient-to-br from-blue-400 to-blue-600 relative">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <div class="text-center">
+                <div class="text-4xl mb-2">🏢</div>
+                <h4 class="text-xl font-semibold">Edifício Comercial</h4>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Complexo Empresarial</h3>
+            <p class="text-gray-600">Limpeza completa de fachada com 200+ janelas</p>
+          </div>
+        </div>
+        
+        <div class="modern-card bg-white rounded-2xl overflow-hidden fade-in image-hover" style="animation-delay: 0.1s;">
+          <div class="h-64 bg-gradient-to-br from-yellow-400 to-orange-500 relative">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <div class="text-center">
+                <div class="text-4xl mb-2">⚡</div>
+                <h4 class="text-xl font-semibold">Usina Solar</h4>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Planta Fotovoltaica</h3>
+            <p class="text-gray-600">Manutenção de 500+ painéis solares</p>
+          </div>
+        </div>
+        
+        <div class="modern-card bg-white rounded-2xl overflow-hidden fade-in image-hover" style="animation-delay: 0.2s;">
+          <div class="h-64 bg-gradient-to-br from-green-400 to-emerald-500 relative">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <div class="text-center">
+                <div class="text-4xl mb-2">🏠</div>
+                <h4 class="text-xl font-semibold">Residencial</h4>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Condomínio Premium</h3>
+            <p class="text-gray-600">Serviço completo de vidros e painéis</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Script Mobile -->
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    let isOpen = false;
+  <!-- Testimonials Section -->
+  <section id="avaliacoes" class="py-20 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          O que Dizem Nossos Clientes
+        </h2>
+        <p class="text-xl text-gray-600">
+          Depoimentos reais de quem já experimentou nossos serviços
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="testimonial-card p-8 rounded-2xl shadow-lg fade-in">
+          <div class="flex items-center mb-4">
+            <div class="flex text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p class="text-gray-700 mb-6 italic text-lg leading-relaxed">
+            "Serviço excepcional! Os vidros ficaram impecáveis e o atendimento foi muito profissional. Recomendo!"
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+              J
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold text-gray-900">João Silva</h4>
+              <p class="text-gray-500">Empresário</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card p-8 rounded-2xl shadow-lg fade-in" style="animation-delay: 0.1s;">
+          <div class="flex items-center mb-4">
+            <div class="flex text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p class="text-gray-700 mb-6 italic text-lg leading-relaxed">
+            "Meus painéis solares nunca estiveram tão limpos! A eficiência aumentou significativamente. Muito obrigada!"
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+              M
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold text-gray-900">Maria Costa</h4>
+              <p class="text-gray-500">Engenheira</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card p-8 rounded-2xl shadow-lg fade-in" style="animation-delay: 0.2s;">
+          <div class="flex items-center mb-4">
+            <div class="flex text-yellow-400 text-xl">⭐⭐⭐⭐⭐</div>
+          </div>
+          <p class="text-gray-700 mb-6 italic text-lg leading-relaxed">
+            "Equipe pontual, equipamentos modernos e resultado incrível. Já agendei a próxima limpeza!"
+          </p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+              C
+            </div>
+            <div class="ml-4">
+              <h4 class="font-semibold text-gray-900">Carlos Mendes</h4>
+              <p class="text-gray-500">Arquiteto</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    menuBtn.addEventListener('click', () => {
-      if (!isOpen) {
-        mobileMenu.classList.remove('hidden');
-        mobileMenu.classList.add('flex', 'menu-enter');
-        setTimeout(() => {
-          mobileMenu.classList.remove('menu-enter');
-          mobileMenu.classList.add('menu-enter-active');
-        }, 10);
-        isOpen = true;
-      } else {
-        mobileMenu.classList.remove('menu-enter-active');
-        mobileMenu.classList.add('menu-exit');
-        setTimeout(() => {
-          mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('flex', 'menu-exit');
-        }, 300);
-        isOpen = false;
-      }
-    });
-  </script>
+  <!-- CTA Section -->
+  <section class="py-20 px-6 modern-gradient text-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Pronto para Começar?
+        </h2>
+        <p class="text-xl mb-8 opacity-90">
+          Entre em contato conosco e receba um orçamento personalizado
+        </p>
+        <a href="https://wa.me/5511999999999" target="_blank">
+          <button class="px-10 py-4 bg-white text-indigo-600 font-bold rounded-full text-xl shadow-xl hover:scale-105 transition-all duration-300">
+            💬 Falar no WhatsApp
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contato" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="fade-in">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          Entre em Contato
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8 mt-12">
+          <div class="modern-card bg-white p-6 rounded-2xl">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">📱</span>
+            </div>
+            <h3 class="font-bold text-lg mb-2">WhatsApp</h3>
+            <p class="text-gray-600">Resposta rápida e atendimento personalizado</p>
+          </div>
+          
+          <div class="modern-card bg-white p-6 rounded-2xl">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Resposta Rápida</h3>
+            <p class="text-gray-600">Retornamos seu contato em até 30 minutos</p>
+          </div>
+          
+          <div class="modern-card bg-white p-6 rounded-2xl">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">🎯</span>
+            </div>
+            <h3 class="font-bold text-lg mb-2">Orçamento Grátis</h3>
+            <p class="text-gray-600">Avaliação gratuita e sem compromisso</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <div class="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-4">
+        Limpeza Visual
+      </div>
+      <p class="text-gray-400 mb-6">
+        Transformando a limpeza em arte desde 2020
+      </p>
+      <div class="border-t border-gray-800 pt-8">
+        <p class="text-gray-500">
+          © 2025 Limpeza Visual. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+  <script src="app.js"></script>
 </body>
 </html>
